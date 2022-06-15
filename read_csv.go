@@ -10,16 +10,23 @@ import (
 func main() {
 	input := "nitish"
 	records := readCsvFile("./text.csv")
+	city := getCity(records, input)
+	fmt.Println(city)
+
+}
+
+func getCity(records [][]string, input string) string {
+	var cityName string
 	for i := 0; i < len(records); i++ {
-		for j := 0; j < len(records[i]); j++ {
-			//fmt.Println(records[i][j], i, j)
-			if records[i][j] == input {
-				fmt.Println(records[i][j+1])
-			}
 
+		//fmt.Println(records[0][0], i)
+		if records[i][0] == input {
+			cityName = records[i][1]
+			break
 		}
-	}
 
+	}
+	return cityName
 }
 
 func readCsvFile(filePath string) [][]string {
